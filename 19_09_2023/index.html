@@ -1,0 +1,111 @@
+<html>
+
+<head>
+
+    <title>Formulário de Cadastro</title>
+
+    <script>
+
+        function validarFormulario() {
+
+            var nome = document.getElementById("nome").value;
+
+            var endereco = document.getElementById("endereco").value;
+
+            var bairro = document.getElementById("bairro").value;
+
+            var cep = document.getElementById("cep").value;
+
+ 
+
+            // Verifica se o campo CEP possui o formato correto (XXXXX-XXX)
+
+            if (!/^\d{5}-\d{3}$/.test(cep)) {
+
+                alert("O campo CEP deve estar no formato correto (XXXXX-XXX).");
+
+                return false;
+
+            }
+
+ 
+
+            // Verifica se os campos nome, endereço e bairro não estão vazios
+
+            if (nome.trim() === "" || endereco.trim() === "" || bairro.trim() === "") {
+
+                alert("Por favor, preencha todos os campos obrigatórios.");
+
+                return false;
+
+            }
+
+ 
+
+            // Verifica se o usuário usou o hífen no CEP
+
+            if (cep.indexOf("-") === -1) {
+
+                alert("O campo CEP deve conter um hífen.");
+
+                return false;
+
+            }
+
+ 
+
+            // Exibe os dados digitados após a validação e informações sobre o CEP
+
+            alert("Dados Digitados:\nNome: " + nome + "\nEndereço: " + endereco + "\nBairro: " + bairro + "\nCEP: " + cep);
+
+            alert("Formato do CEP correto: XXXXX-XXX\nOs números da local estão corretos e o hífen foi usado.");
+
+ 
+
+            // Se todos os campos estiverem corretos, o formulário é enviado
+
+            return true;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1>Formulário de Cadastro</h1>
+
+    <form onsubmit="return validarFormulario()">
+
+        <label for="nome">Nome:</label>
+
+        <input type="text" id="nome" name="nome" required><br>
+
+ 
+
+        <label for="endereco">Endereço:</label>
+
+        <input type="text" id="endereco" name="endereco" required><br>
+
+ 
+
+        <label for="bairro">Bairro:</label>
+
+        <input type="text" id="bairro" name="bairro" required><br>
+
+ 
+
+        <label for="cep">CEP:</label>
+
+        <input type="text" id="cep" name="cep" pattern="\d{5}-\d{3}" placeholder="XXXXX-XXX" required><br>
+
+ 
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</body>
+
+</html>
